@@ -1,0 +1,12 @@
+{
+  "db": {
+    "user": "recipe_dev",
+    "password": "root",
+    "database": "recipe",
+    "max": 10
+  },
+  "connectionString" : "postgresql://recipe_dev:root@localhost/recipe",
+  "cookie": {
+    "secret": "secret"
+  }
+}
