@@ -1,4 +1,4 @@
-const nconf = require('nconf');
+const nconf = require('./config');
 
 const conf = nconf.get('db');
 const pg = require('pg');

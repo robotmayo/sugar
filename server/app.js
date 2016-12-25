@@ -1,6 +1,4 @@
 const {resolve} = require('path');
-const nconf = require('nconf');
-nconf.file(resolve(__dirname, 'config.json'));
 
 const express = require('express');
 const hbs = require('express-hbs');
@@ -21,6 +19,7 @@ app.set('view engine', 'hbs');
 app.set('views', resolve(__dirname, 'views'));
 
 app.get('*', function(req, res){
+  console.log(req.user);
   res.render('index');
 });
 
