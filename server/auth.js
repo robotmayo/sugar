@@ -29,7 +29,8 @@ function postRegister(req, res) {
     return res.json(result.error);
   }
   User.addUser({email, password})
-  .then(id => {
+  .then(idArr => {
+    const id = idArr[0];
     return new Promise(function(resolve, reject){
       req.login({id}, err => {
         if(err) return reject(err);
@@ -40,7 +41,14 @@ function postRegister(req, res) {
   .then(() => {
     res.redirect('/');
   })
-  .catch(console.error);
+  .catch(err => {
+    if(err.detail && (/already exists/).test(err.detail)){
+      res.status(400);
+      return res.json({error: 'Email already in use'});
+    }
+    res.status(500);
+    return res.json({error: 'Server Error'});
+  });
 }
 module.exports.postRegister = postRegister;
 

@@ -5,6 +5,7 @@ const {knex} = require('../db');
 module.exports.getUser = function getUserByID(obj){
   return knex('user_accounts')
   .select('id', 'email','password')
+  .where(obj);
 };
 
 module.exports.addUser = function addUser({email, password}){

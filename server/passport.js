@@ -9,11 +9,11 @@ function serializeUser(user, done) {
 }
 module.exports.serializeUser = serializeUser;
 
-function deserializeUser(user, done) {
-  return User.getUser({id: user.id})
+function deserializeUser(id, done) {
+  return User.getUser({id})
     .then(results => {
       if(results.length === 0) return done(null, false, {info: 'User not found'});
-      const {id, email} = results[0];
+      const {email} = results[0];
       done(null, {userID: id, email});
     })
     .catch(done);
