@@ -14,4 +14,7 @@ module.exports.addUser = function addUser({email, password}){
   .insert({email, password: hash}, 'id');
 }
 
+module.exports.verifyPassword = function verifyPassword(hash, password){
+  return compareSync(password, hash);
+};
 
