@@ -20,7 +20,9 @@ CREATE TABLE recipes(
   name varchar(1024),
   author VARCHAR(500),
   url varchar(2048),
-  website varchar(500)
+  website varchar(500),
+  added_on TIMESTAMP DEFAULT NOW(),
+  published_on TIMESTAMP
 );
 
 CREATE TABLE recipe_ingredients(
